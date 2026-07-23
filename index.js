@@ -37,6 +37,7 @@ const clearButton = document.getElementById('clear');
 const firstDisplayNumber = document.getElementById('first-display-number');
 const DisplayOperator = document.getElementById('display-operator');
 const secondDisplayNumber = document.getElementById('second-display-number');
+const backspaceBtn = document.getElementById('backspace');
 
 numbers.forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -91,3 +92,15 @@ const clear = (shouldClearNum1 = false) => {
     secondDisplayNumber.textContent = '';
     firstDisplayNumber.textContent = '';
 }
+
+backspaceBtn.addEventListener('click', (e) => {
+    if (num2 !== '') {
+        num2 = num2.slice(0, -1);
+        secondDisplayNumber.textContent = num2;
+        console.log(num2);
+    } else if (num1 !== '' && dispOperator === null) {
+        num1 = num1.slice(0, -1);
+        firstDisplayNumber.textContent = num1;
+        console.log(num1);
+    }
+})
