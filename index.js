@@ -40,17 +40,23 @@ const secondDisplayNumber = document.getElementById('second-display-number');
 
 numbers.forEach((button) => {
     button.addEventListener("click", (e) => {
+        const value = e.target.dataset.value;
         if (isAfterOperate) {
             clear(true);
             isAfterOperate = false;
-            // num1 = e.target.dataset.value;
-            // console.log(isAfterOperate);
         }
         if (dispOperator !== null) {
-            num2 = num2.concat(e.target.dataset.value);
+            if (value === "." && num2.includes(".")) {
+                return;
+            }
+            num2 = num2.concat(value);
             secondDisplayNumber.textContent = num2;
+
         } else {
-            num1 = num1.concat(e.target.dataset.value);
+            if (value === "." && num1.includes(".")) {
+                return;
+            }
+            num1 = num1.concat(value);
             firstDisplayNumber.textContent = num1;
         }
     })
