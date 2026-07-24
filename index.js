@@ -104,3 +104,25 @@ backspaceBtn.addEventListener('click', (e) => {
         console.log(num1);
     }
 })
+
+document.addEventListener("keydown", (event) => {
+    const isCalculatorKey = /^[0-9+\-*/().=%]$/.test(event.key);
+    const isControlKey = [
+        "Backspace",
+        "Delete",
+        "Enter",
+        "Escape",
+        "Tab",
+        "ArrowLeft",
+        "ArrowRight"
+    ].includes(event.key);
+
+    if (isCalculatorKey || isControlKey) {
+        const button = document.querySelector(`button[data-value="${event.key}"]`)
+        if (button) {
+            button.click();
+        }
+    } else {
+        event.preventDefault(); // Optional: prevent other keys
+    }
+});
