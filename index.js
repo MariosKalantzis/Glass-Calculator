@@ -93,7 +93,7 @@ const clear = (shouldClearNum1 = false) => {
     DisplayOperator.textContent = '';
     secondDisplayNumber.textContent = '';
     firstDisplayNumber.textContent = '';
-    currentDisplayNumber.textContent = '';
+    currentDisplayNumber.textContent = '0';
 }
 
 backspaceBtn.addEventListener('click', (e) => {
