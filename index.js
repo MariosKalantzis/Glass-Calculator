@@ -20,7 +20,7 @@ const operate = (operator, list) => {
     let result = list.reduce(operation);
     DisplayOperator.textContent = '';
     secondDisplayNumber.textContent = '';
-    firstDisplayNumber.textContent = result;
+    currentDisplayNumber.textContent = result;
     dispOperator = null;
     num2 = "";
     num1 = result.toString();
@@ -38,6 +38,8 @@ const firstDisplayNumber = document.getElementById('first-display-number');
 const DisplayOperator = document.getElementById('display-operator');
 const secondDisplayNumber = document.getElementById('second-display-number');
 const backspaceBtn = document.getElementById('backspace');
+const currentDisplayNumber =
+    document.getElementById("current-display-number");
 
 numbers.forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -91,6 +93,7 @@ const clear = (shouldClearNum1 = false) => {
     DisplayOperator.textContent = '';
     secondDisplayNumber.textContent = '';
     firstDisplayNumber.textContent = '';
+    currentDisplayNumber.textContent = '';
 }
 
 backspaceBtn.addEventListener('click', (e) => {

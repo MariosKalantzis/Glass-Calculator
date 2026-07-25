@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <script src="index.js" defer></script>
-
     <title>Document</title>
 </head>
 
@@ -14,9 +13,12 @@
     <div class="main">
         <div class="container">
             <div class="display-container">
-                <div id="first-display-number"></div>
-                <div id="display-operator"></div>
-                <div id="second-display-number"></div>
+                <div class="previous-display">
+                    <span id="first-display-number"></span>
+                    <span id="display-operator"></span>
+                    <span id="second-display-number"></span>
+                </div>
+                <div id="current-display-number"></div>
             </div>
             <button class="number" data-value="1">1</button>
             <button class="number" data-value="2">2</button>
@@ -38,9 +40,6 @@
             <button id="clear" data-value="Escape">AC</button>
         </div>
     </div>
-
-
-
 </body>
 
 </html>
