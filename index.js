@@ -15,7 +15,7 @@ const operate = (operator, list) => {
         throw new Error("Unsupported operator");
     }
     if (operator === "/" && list.find(number => number === 0) === 0) {
-        throw new Error("You cannot divide by 0 fucking idiot")
+        throw new Error("You cannot divide by 0")
     }
     let result = list.reduce(operation);
     DisplayOperator.textContent = '';
