@@ -118,11 +118,13 @@ document.addEventListener("keydown", (event) => {
     ].includes(event.key);
 
     if (isCalculatorKey || isControlKey) {
-        const button = document.querySelector(`button[data-value="${event.key}"]`)
+        let key = event.key;
+        if (event.key === "=") key = "Enter";
+        const button = document.querySelector(`button[data-value="${key}"]`)
         if (button) {
             button.click();
         }
     } else {
-        event.preventDefault(); // Optional: prevent other keys
+        event.preventDefault();
     }
 });

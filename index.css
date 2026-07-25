@@ -1,5 +1,5 @@
 .display-container {
-    display: flex;
+    display: grid;
     border-radius: 10px;
     border: 2px solid black;
     justify-content: end;
