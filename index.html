@@ -12,19 +12,24 @@
 <body>
     <div class="main">
         <div class="container">
+            <div class="top-bar">
+                <button id="theme-toggle">
+                    🌙
+                </button>
+            </div>
             <div class="display-container">
                 <div class="previous-display">
                     <span id="first-display-number"></span>
                     <span id="display-operator"></span>
                     <span id="second-display-number"></span>
                 </div>
-                <div id="current-display-number"></div>
+                <div id="current-display-number">0</div>
             </div>
             <div class="buttons-container">
                 <button id="clear" data-value="Escape">AC</button>
                 <button id="backspace" data-value="Backspace">⌫</button>
-                <button class="operators" data-value="/">/</button>
-                <button class="operators" data-value="*">*</button>
+                <button class="operators" data-value="/">÷</button>
+                <button class="operators" data-value="*">x</button>
                 <button class="number" data-value="7">7</button>
                 <button class="number" data-value="8">8</button>
                 <button class="number" data-value="9">9</button>
