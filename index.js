@@ -151,9 +151,20 @@ const themeToggle = document.getElementById("theme-toggle");
 themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("light-theme");
 
-    const isLightTheme =
-        document.body.classList.contains("light-theme");
+    const isLightTheme = document.body.classList.contains("light-theme");
 
-    themeToggle.textContent = isLightTheme ? "🌙" : "☀️";
+    if (isLightTheme) {
+        themeToggle.setAttribute("aria-label", "Switch to dark theme");
+    } else {
+        themeToggle.setAttribute("aria-label", "Switch to light theme");
+    }
 });
 
+const splashScreen =
+    document.getElementById("splash-screen");
+
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        splashScreen.classList.add("hidden");
+    }, 1800);
+});

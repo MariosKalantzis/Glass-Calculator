@@ -267,19 +267,57 @@ footer a:hover {
 }
 
 #theme-toggle {
-    width: 42px;
-    height: 42px;
-    border: none;
-    border-radius: 50%;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 42px);
+
+    width: 88px;
+    height: 44px;
+    padding: 2px;
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
     cursor: pointer;
-    font-size: 18px;
-    background-color: rgba(255, 255, 255, .08);
-    color: white;
-    transition: .25;
+    overflow: hidden;
 }
 
-#theme-toggle:hover {
-    background: rgba(255, 255, 255, .18);
+.theme-slider {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+    transition: transform 0.35s ease;
+}
+
+.theme-icon {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+    pointer-events: none;
+}
+
+body.light-theme .theme-slider {
+    transform: translateX(42px);
 }
 
 .operators.active {
@@ -289,4 +327,79 @@ footer a:hover {
     transform: scale(1.03);
 
     transition: .2s ease;
+}
+
+#splash-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at 30% 30%,
+            rgba(0, 122, 255, 0.25),
+            transparent 35%),
+        radial-gradient(circle at 75% 70%,
+            rgba(255, 45, 85, 0.2),
+            transparent 35%),
+        #0b0b0b;
+
+    transition:
+        opacity 0.7s ease,
+        visibility 0.7s ease;
+}
+
+.splash-content {
+    text-align: center;
+    color: white;
+
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(8px);
+
+    animation: splashFadeIn 0.9s ease forwards;
+}
+
+.splash-content h1 {
+    margin: 0 0 18px;
+    font-size: 46px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.splash-content p {
+    margin: 0 0 8px;
+    color: #a5a5a5;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.splash-content h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: #ff9f0a;
+}
+
+#splash-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@keyframes splashFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
 }
