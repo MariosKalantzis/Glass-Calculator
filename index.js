@@ -41,6 +41,12 @@ const backspaceBtn = document.getElementById('backspace');
 const currentDisplayNumber =
     document.getElementById("current-display-number");
 
+const removeActiveOperator = () => {
+    operators.forEach((button) => {
+        button.classList.remove("active");
+    });
+};
+
 numbers.forEach((button) => {
     button.addEventListener("click", (e) => {
         const value = e.target.dataset.value;
@@ -71,6 +77,10 @@ operators.forEach((button) => {
             operate(dispOperator, [Number(num1), Number(num2)])
             return
         }
+
+        removeActiveOperator();
+        e.currentTarget.classList.add("active");
+
         DisplayOperator.textContent = e.target.dataset.value;
         dispOperator = e.target.dataset.value;
     })
@@ -79,6 +89,7 @@ operators.forEach((button) => {
 operateBtn.addEventListener('click', (e) => {
     if (num1 !== '' && num2 !== '' && dispOperator !== null) {
         operate(dispOperator, [Number(num1), Number(num2)])
+        removeActiveOperator();
     }
 })
 
@@ -94,6 +105,8 @@ const clear = (shouldClearNum1 = false) => {
     secondDisplayNumber.textContent = '';
     firstDisplayNumber.textContent = '';
     currentDisplayNumber.textContent = '0';
+
+    removeActiveOperator();
 }
 
 backspaceBtn.addEventListener('click', (e) => {
@@ -131,3 +144,16 @@ document.addEventListener("keydown", (event) => {
         event.preventDefault();
     }
 });
+
+
+const themeToggle = document.getElementById("theme-toggle");
+
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("light-theme");
+
+    const isLightTheme =
+        document.body.classList.contains("light-theme");
+
+    themeToggle.textContent = isLightTheme ? "🌙" : "☀️";
+});
+

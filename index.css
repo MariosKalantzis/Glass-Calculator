@@ -2,6 +2,47 @@
     box-sizing: border-box;
 }
 
+:root {
+    --page-bg:
+        radial-gradient(circle at 20% 20%,
+            rgba(0, 122, 255, 0.28),
+            transparent 30%),
+        radial-gradient(circle at 80% 75%,
+            rgba(255, 45, 85, 0.24),
+            transparent 32%),
+        radial-gradient(circle at top,
+            #2d2d2d 0%,
+            #1c1c1e 35%,
+            #0b0b0b 100%);
+
+    --calculator-bg: rgba(15, 15, 18, 0.62);
+    --display-color: #ffffff;
+    --previous-color: #a5a5a5;
+    --footer-color: #8b8b8b;
+    --author-color: #ffffff;
+    --glass-border: rgba(255, 255, 255, 0.16);
+}
+
+body.light-theme {
+    --page-bg:
+        radial-gradient(circle at 20% 20%,
+            rgba(0, 122, 255, 0.22),
+            transparent 30%),
+        radial-gradient(circle at 80% 75%,
+            rgba(255, 149, 0, 0.22),
+            transparent 32%),
+        linear-gradient(135deg,
+            #f5f7fa,
+            #dce4ec);
+
+    --calculator-bg: rgba(255, 255, 255, 0.58);
+    --display-color: #161616;
+    --previous-color: #666666;
+    --footer-color: #555555;
+    --author-color: #111111;
+    --glass-border: rgba(255, 255, 255, 0.65);
+}
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -20,6 +61,9 @@ body {
 
     display: flex;
     flex-direction: column;
+    background: var(--page-bg);
+    transition: background 0.4s ease;
+
 }
 
 .main {
@@ -51,6 +95,11 @@ body {
     justify-content: flex-end;
     gap: 25px;
     overflow: hidden;
+    background: var(--calculator-bg);
+    border: 1px solid var(--glass-border);
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease;
 
 }
 
@@ -93,6 +142,7 @@ body {
     color: #a5a5a5;
     font-size: 20px;
     overflow-wrap: anywhere;
+    color: var(--previous-color);
 }
 
 #current-display-number {
@@ -101,6 +151,7 @@ body {
     font-weight: 300;
     line-height: 1;
     overflow-wrap: anywhere;
+    color: var(--display-color);
 }
 
 #display-operator {
@@ -174,18 +225,22 @@ footer {
     color: #8b8b8b;
     font-size: 14px;
     letter-spacing: 0.5px;
+    color: var(--footer-color);
 }
 
 .author {
     color: #ffffff;
     font-weight: 600;
+    color: var(--author-color);
 }
 
 footer a {
     color: white;
     text-decoration: none;
     transition: color .2s ease;
+    color: var(--author-color);
 }
+
 
 footer a:hover {
     color: #ff9f0a;
@@ -225,4 +280,13 @@ footer a:hover {
 
 #theme-toggle:hover {
     background: rgba(255, 255, 255, .18);
+}
+
+.operators.active {
+    background: white;
+    color: #ff9f0a;
+
+    transform: scale(1.03);
+
+    transition: .2s ease;
 }
