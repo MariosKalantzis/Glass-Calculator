@@ -45,6 +45,9 @@ Building this calculator taught me much more than just writing code.
 - Add scientific calculator functions
 - Improve accessibility (ARIA labels and screen reader support)
 
+## Live Demo
+https://marioskalantzis.github.io/https---github.com-MariosKalantzis-Calculator/
+
 ## Acknowledgements
 
 This project was built as part of The Odin Project curriculum.
