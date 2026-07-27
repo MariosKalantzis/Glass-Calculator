@@ -46,7 +46,7 @@ Building this calculator taught me much more than just writing code.
 - Improve accessibility (ARIA labels and screen reader support)
 
 ## Live Demo
-https://marioskalantzis.github.io/https---github.com-MariosKalantzis-Calculator/
+https://marioskalantzis.github.io/Glass-Calculator/
 
 ## Acknowledgements
 
