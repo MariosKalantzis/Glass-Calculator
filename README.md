@@ -44,3 +44,7 @@ Building this calculator taught me much more than just writing code.
 - Persist theme preference using Local Storage
 - Add scientific calculator functions
 - Improve accessibility (ARIA labels and screen reader support)
+
+## Acknowledgements
+
+This project was built as part of The Odin Project curriculum.
