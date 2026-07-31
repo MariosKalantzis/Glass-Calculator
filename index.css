@@ -66,10 +66,6 @@ body {
 
 }
 
-body.light-theme .theme-slider {
-    transform: translateX(42px);
-}
-
 .main {
     flex: 1;
     display: flex;
@@ -273,35 +269,32 @@ footer a:hover {
 #theme-toggle {
     position: relative;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     width: 88px;
     height: 44px;
-    padding: 0;
-    aspect-ratio: auto;
-
-    display: grid;
-    grid-template-columns: 42px 42px;
-    align-items: center;
-    justify-content: center;
+    padding: 3px;
 
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 999px;
 
     background: rgba(255, 255, 255, 0.08);
+
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 
     overflow: hidden;
     cursor: pointer;
 
-    font-size: initial;
-    line-height: normal;
+    aspect-ratio: auto;
 }
-
 
 .theme-slider {
     position: absolute;
-    top: 2px;
-    left: 2px;
+    top: 3px;
+    left: 3px;
 
     width: 38px;
     height: 38px;
@@ -320,13 +313,13 @@ footer a:hover {
     position: relative;
     z-index: 2;
 
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
 
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    font-family: "Segoe UI Emoji", sans-serif;
     font-size: 18px;
     line-height: 1;
 
@@ -420,13 +413,4 @@ body.light-theme .theme-slider {
         transform: translateY(0);
         filter: blur(0);
     }
-}
-
-#percentage {
-    background: rgba(255, 159, 10, 0.88);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.24),
-        0 8px 18px rgba(255, 159, 10, 0.18);
 }
