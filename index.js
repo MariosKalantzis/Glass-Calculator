@@ -9,6 +9,25 @@ let num1 = "";
 let num2 = "";
 let dispOperator = null;
 
+const percentage = () => {
+    if (dispOperator === null) {
+        num1 = (Number(num1) / 100).toString();
+        firstDisplayNumber.textContent = num1;
+    } else if (dispOperator === "+") {
+        num2 = ((Number(num1) / 100) * Number(num2)).toString();
+        secondDisplayNumber.textContent = num2;
+    } else if (dispOperator === "-") {
+        num2 = ((Number(num1) / 100) * Number(num2)).toString();
+        secondDisplayNumber.textContent = num2;
+    } else if (dispOperator === "*") {
+        num2 = (Number(num2) / 100).toString();
+        secondDisplayNumber.textContent = num2;
+    } else if (dispOperator === "/") {
+        num2 = (Number(num2) / 100).toString();
+        secondDisplayNumber.textContent = num2;
+    }
+}
+
 const operate = (operator, list) => {
     const operation = operations[operator]
     if (!operation) {
@@ -18,16 +37,17 @@ const operate = (operator, list) => {
         throw new Error("You cannot divide by 0")
     }
     let result = list.reduce(operation);
-    DisplayOperator.textContent = '';
+    displayOperator.textContent = '';
     secondDisplayNumber.textContent = '';
     currentDisplayNumber.textContent = result;
+    fitText();
     dispOperator = null;
     num2 = "";
     num1 = result.toString();
     console.log(isAfterOperate)
     isAfterOperate = true;
 }
-
+const percentageBtn = document.getElementById("percentage");
 const container = document.querySelector('.container');
 const display = document.getElementById("display");
 const numbers = document.querySelectorAll('.number');
@@ -35,7 +55,7 @@ const operators = document.querySelectorAll('.operators');
 const operateBtn = document.getElementById('operate');
 const clearButton = document.getElementById('clear');
 const firstDisplayNumber = document.getElementById('first-display-number');
-const DisplayOperator = document.getElementById('display-operator');
+const displayOperator = document.getElementById('display-operator');
 const secondDisplayNumber = document.getElementById('second-display-number');
 const backspaceBtn = document.getElementById('backspace');
 const currentDisplayNumber =
@@ -46,6 +66,20 @@ const removeActiveOperator = () => {
         button.classList.remove("active");
     });
 };
+
+
+function fitText() {
+    const maxSize = 80;
+    const minSize = 24;
+
+    let size = maxSize;
+    currentDisplayNumber.style.fontSize = size + "px";
+
+    while (currentDisplayNumber.scrollWidth > currentDisplayNumber.clientWidth && size > minSize) {
+        size--;
+        currentDisplayNumber.style.fontSize = size + "px";
+    }
+}
 
 numbers.forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -81,7 +115,7 @@ operators.forEach((button) => {
         removeActiveOperator();
         e.currentTarget.classList.add("active");
 
-        DisplayOperator.textContent = e.target.dataset.value;
+        displayOperator.textContent = e.target.dataset.value;
         dispOperator = e.target.dataset.value;
     })
 })
@@ -101,10 +135,11 @@ const clear = (shouldClearNum1 = false) => {
     if (shouldClearNum1) num1 = '';
     num2 = '';
     dispOperator = null;
-    DisplayOperator.textContent = '';
+    displayOperator.textContent = '';
     secondDisplayNumber.textContent = '';
     firstDisplayNumber.textContent = '';
     currentDisplayNumber.textContent = '0';
+    fitText();
 
     removeActiveOperator();
 }
@@ -144,6 +179,8 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
+percentageBtn.addEventListener("click", percentage);
+
 
 const themeToggle = document.getElementById("theme-toggle");
 
@@ -167,3 +204,4 @@ window.addEventListener("load", () => {
         splashScreen.classList.add("hidden");
     }, 1800);
 });
+
