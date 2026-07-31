@@ -14,7 +14,7 @@ const operate = (operator, list) => {
     if (!operation) {
         throw new Error("Unsupported operator");
     }
-    if (operator === "/" && list.find(number => number === 0) === 0) {
+    if (operator === "/" && list.includes(number => number === 0) === 0) {
         throw new Error("You cannot divide by 0")
     }
     let result = list.reduce(operation);
@@ -117,7 +117,6 @@ backspaceBtn.addEventListener('click', (e) => {
     } else if (num1 !== '' && dispOperator === null) {
         num1 = num1.slice(0, -1);
         firstDisplayNumber.textContent = num1;
-        console.log(num1);
     }
 })
 
