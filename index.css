@@ -152,6 +152,7 @@ body {
     line-height: 1;
     overflow-wrap: anywhere;
     color: var(--display-color);
+    padding: 4px;
 }
 
 #display-operator {
